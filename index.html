@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moaz Hany Elbakhsha | Mechatronics & Embedded Systems Engineer</title>
+  <meta name="description" content="Portfolio of Moaz Hany Elbakhsha — Mechatronics Engineer specializing in Multi-layer PCB Design (Altium), Embedded Systems (STM32/C++), Autonomous Robotics (ROS2), and Computer Vision.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f2fe'><path d='M6 2v2h2v2H6v2H4V6H2V4h2V2h2zm12 0h2v2h2v2h-2v2h-2V6h-2V4h2V2zm-9 7h6v6H9V9zm-3 2h2v2H6v-2zm12 0h2v2h-2v-2zm-6 7h2v2h-2v-2zm0-12h2v2h-2V6zM6 18h2v2H6v-2zm12 0h2v2h-2v-2z'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Ambient Effects -->
+  <div class="glow-sphere sphere-1"></div>
+  <div class="glow-sphere sphere-2"></div>
+  <div class="glow-grid"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar container">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-bracket">&lt;</span>
+        <span class="brand-name">MOAZ.ELBAKHSHA</span>
+        <span class="brand-bracket">/&gt;</span>
+      </a>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user-astronaut"></i> About</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-microchip"></i> Hardware & Projects</a>
+        <a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> Skills</a>
+        <a href="#awards" class="nav-link"><i class="fa-solid fa-trophy"></i> Awards</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="assets/Moaz_Elbakhsha_Resume.pdf" download="Moaz_Elbakhsha_Resume.pdf" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-file-arrow-down"></i> <span>Resume</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section container">
+      <div class="hero-content">
+        <div class="status-badge pulse">
+          <span class="status-dot"></span>
+          <span>Available for Mechatronics & Embedded Systems Roles</span>
+        </div>
+
+        <h1 class="hero-title">
+          Engineering Hardware, Firmware & <span class="text-gradient">Autonomous Robotics</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Hello, I'm <strong class="text-white">Moaz Hany Elbakhsha</strong> — a Mechatronics Engineer with hands-on expertise in <strong>4-layer high-density PCB routing (Altium)</strong>, <strong>STM32 embedded systems</strong>, <strong>closed-loop control</strong>, and <strong>ROS2-driven autonomous mobile robotics</strong>.
+        </p>
+
+        <div class="hero-meta">
+          <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Johor / Penang, Malaysia</span>
+          <span class="meta-item"><i class="fa-solid fa-graduation-cap"></i> B.Eng Mechatronics, UTM</span>
+          <span class="meta-item"><i class="fa-solid fa-award"></i> ABU Robocon International Winner</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-microchip"></i> View Technical Projects
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <i class="fa-solid fa-paper-plane"></i> Get In Touch
+          </a>
+          <a href="assets/Moaz_Elbakhsha_cv.pdf" download="Moaz_Elbakhsha_CV.pdf" class="btn btn-glass">
+            <i class="fa-solid fa-download"></i> Download CV
+          </a>
+        </div>
+
+        <div class="hero-quick-links">
+          <a href="https://linkedin.com/in/moazhany" target="_blank" rel="noopener noreferrer" class="social-chip">
+            <i class="fa-brands fa-linkedin"></i> linkedin.com/in/moazhany
+          </a>
+          <button class="social-chip" id="quickCopyEmail" data-copy="moaz.hany.elbakhsha@gmail.com">
+            <i class="fa-solid fa-envelope"></i> Copy Email
+            <span class="tooltip" id="copyTooltip">Copied!</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="profile-card-glass">
+          <div class="profile-frame">
+            <img src="assets/headshot.png" alt="Moaz Hany Elbakhsha" class="profile-img">
+            <div class="profile-ring"></div>
+          </div>
+          <div class="profile-details">
+            <h3 class="profile-name">Moaz Hany</h3>
+            <p class="profile-role">Mechatronics & Embedded Engineer</p>
+            <div class="telemetry-bar">
+              <span class="telemetry-tag"><i class="fa-solid fa-layer-group"></i> 4-Layer PCB</span>
+              <span class="telemetry-tag"><i class="fa-solid fa-robot"></i> ROS2 / YOLO</span>
+              <span class="telemetry-tag"><i class="fa-solid fa-bolt"></i> STM32 / CAN</span>
+            </div>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Metrics Ribbon -->
+    <section class="metrics-ribbon">
+      <div class="container metrics-grid">
+        <div class="metric-card">
+          <span class="metric-number">4-Layer</span>
+          <span class="metric-label">High-Density High-Speed PCB Layouts</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-number">50A / 24V</span>
+          <span class="metric-label">High-Current Actuator Power Modules</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-number">&lt; 1.0s</span>
+          <span class="metric-label">Safety Cutoff Latency in Robotic Cells</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-number">10 Hz</span>
+          <span class="metric-label">Edge AI (YOLOv8) On-Robot Inference</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-number">🏆 Panasonic</span>
+          <span class="metric-label">ABU Robocon 2024 Vietnam Award</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Engineering Philosophy -->
+    <section id="about" class="section container">
+      <div class="section-header">
+        <span class="section-subtitle">// BACKGROUND & PHILOSOPHY</span>
+        <h2 class="section-title">Bridging Pure Hardware with Intelligent Control</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card glass-panel">
+          <div class="card-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+          <h3>System-Level Hardware Design</h3>
+          <p>
+            Specialized in multi-layer PCB design using <strong>Altium Designer</strong>. Experienced in routing 100-ohm impedance-controlled differential pairs (Ethernet, RMII), noise-isolated 4-layer stackups, CAN bus transceivers, eFuse power protection, and high-current power switching up to 50A.
+          </p>
+        </div>
+
+        <div class="about-card glass-panel">
+          <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3>Embedded Firmware & Protocols</h3>
+          <p>
+            Proficient in bare-metal and HAL development for <strong>STM32 (Cortex-M7, M4, M3)</strong> and microcontrollers. Solid experience architecting robust multi-node fieldbus communications across CAN1/2/3, high-speed SPI, I2C, and UART.
+          </p>
+        </div>
+
+        <div class="about-card glass-panel">
+          <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+          <h3>Autonomous Robotics & Perception</h3>
+          <p>
+            Engineering end-to-end robotics systems: from sensor fusion (ultrasonic arrays, IMUs, quadrature and magnetic encoders) to ROS2 navigation state machines, closed-loop PID motion control, and real-time edge computer vision using YOLOv8.
+          </p>
+        </div>
+
+        <div class="about-card glass-panel">
+          <div class="card-icon"><i class="fa-solid fa-industry"></i></div>
+          <h3>Industrial QA & Production Test</h3>
+          <p>
+            Industrial test engineering track record at <strong>ViE Technologies</strong>, designing closed-loop optical illumination test benches, automated X-ray glass transparency QA, and limit-switch protected precision positioning mechanisms.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Engineering Projects -->
+    <section id="projects" class="section container">
+      <div class="section-header-flex">
+        <div>
+          <span class="section-subtitle">// PORTFOLIO DIRECTORY</span>
+          <h2 class="section-title">Featured Engineering Projects</h2>
+        </div>
+
+        <!-- Filter Buttons with Counts -->
+        <div class="filter-wrapper" id="projectFilters">
+          <button class="filter-btn active" data-filter="all">All <span class="filter-count">8</span></button>
+          <button class="filter-btn" data-filter="pcb">PCB & Hardware <span class="filter-count">5</span></button>
+          <button class="filter-btn" data-filter="robotics">Robotics & AI <span class="filter-count">4</span></button>
+          <button class="filter-btn" data-filter="embedded">Firmware & Control <span class="filter-count">6</span></button>
+          <button class="filter-btn" data-filter="industrial">Industrial Test <span class="filter-count">3</span></button>
+        </div>
+      </div>
+
+      <!-- Real-time Keyword Search Toolbar -->
+      <div class="projects-toolbar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="projectSearchInput" placeholder="Filter projects by technology (e.g. STM32, Altium, CAN, ROS2, YOLO, PID)..." autocomplete="off" aria-label="Search projects">
+          <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" aria-label="Clear search" style="display: none;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="results-feedback" id="searchFeedback">Showing all 8 projects</div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Empty State Container -->
+        <div class="projects-empty-state" id="projectsEmptyState" style="display: none;">
+          <div class="empty-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3>No matching projects found</h3>
+          <p>Try searching for different keywords like "STM32", "Altium", "CAN", or clear your filter.</p>
+          <button class="btn btn-primary btn-sm" id="resetFiltersBtn">
+            <i class="fa-solid fa-rotate-left"></i> Reset Filter & Search
+          </button>
+        </div>
+
+        <!-- Project 1: STM32H7 Mainboard -->
+        <div class="project-card glass-panel" data-category="pcb embedded robotics" data-id="stm32h7-mainboard">
+          <div class="project-img-wrapper">
+            <img src="assets/stm32h7-mainboard.png" alt="4-Layer STM32H7 Mainboard Layout">
+            <span class="category-badge pcb">PCB & Hardware</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>Altium Designer</span>
+              <span>STM32H7</span>
+              <span>4-Layer PCB</span>
+              <span>3x CAN Bus</span>
+            </div>
+            <h3 class="project-title">4-Layer STM32H7 Central Robotics Mainboard (UTM RBC 24/25)</h3>
+            <p class="project-desc">
+              High-density central robot controller engineered for international robotics competition. Upgraded to 480 MHz STM32H7 to eliminate legacy MCU processing lag, and integrated a 3rd dedicated CAN channel to prevent signal crashes under heavy bus loads.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2: Greenhouse Autonomous Robot Platform -->
+        <div class="project-card glass-panel" data-category="robotics embedded" data-id="greenhouse-robot">
+          <div class="project-img-wrapper">
+            <img src="assets/capstone_robot/robot_corridor_test.png" alt="Autonomous Greenhouse Mobile Robot">
+            <span class="category-badge robotics">Robotics & Autonomous Systems</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>ROS2</span>
+              <span>Sensor Fusion</span>
+              <span>Dual-PID</span>
+              <span>Arduino Uno/Mega</span>
+            </div>
+            <h3 class="project-title">Autonomous Navigation & Control System for Greenhouse Mobile Robot (FYP)</h3>
+            <p class="project-desc">
+              Differential-drive autonomous mobile robot platform engineered for agricultural row-following. Combines ROS2 finite state machine with 4x ultrasonic distance array, IMU, and dual-PID control for crop-line tracking, 90° row transitions, and 160° obstacle U-turn recovery.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3: Greenhouse Edge AI Vision System -->
+        <div class="project-card glass-panel" data-category="robotics embedded" data-id="greenhouse-vision">
+          <div class="project-img-wrapper">
+            <img src="assets/capstone_robot/greenhouse_yolo_clear.jpg" alt="Greenhouse Edge AI Vision System">
+            <span class="category-badge robotics">Computer Vision & Edge AI</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>YOLOv8 Edge AI</span>
+              <span>PyTorch</span>
+              <span>10 Hz Inference</span>
+              <span>OpenCV</span>
+            </div>
+            <h3 class="project-title">Edge AI Vision & Plant Disease Guidance System for Agricultural Robotics</h3>
+            <p class="project-desc">
+              Real-time edge computer vision pipeline engineered for greenhouse row guidance and crop inspection using YOLOv8 at 10 Hz. Solved path-identification failures faced by earlier student iterations by detecting crop polybag lines to dynamically calculate navigation corridors directly between the plants.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3: Ethernet-to-CAN Gateway -->
+        <div class="project-card glass-panel" data-category="pcb embedded industrial" data-id="ethernet-can-gateway">
+          <div class="project-img-wrapper">
+            <img src="assets/ethernet-can-gateway.png" alt="Industrial Ethernet-to-CAN Gateway PCB">
+            <span class="category-badge pcb">PCB & Hardware</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>STM32F107</span>
+              <span>100Ω Diff Pairs</span>
+              <span>RMII Matched</span>
+              <span>Dual CAN</span>
+            </div>
+            <h3 class="project-title">Industrial Ethernet-to-CAN Communication Gateway PCB</h3>
+            <p class="project-desc">
+              Multi-sheet industrial communication gateway. Features strict 100Ω differential pair routing (ETHER_TX/RX), length-matched RMII lines, dual CAN transceivers with 120Ω termination, and integrated magnetics RJ45.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 4: ViTrox Closed-Loop Illumination & Precision Base -->
+        <div class="project-card glass-panel" data-category="industrial embedded" data-id="vitrox-closed-loop">
+          <div class="project-img-wrapper fallback-visual">
+            <div class="schematic-preview-art">
+              <i class="fa-solid fa-lock" style="color: var(--accent-amber);"></i>
+              <span style="color: var(--accent-amber); font-weight: 700; letter-spacing: 1.5px;">CONFIDENTIAL</span>
+            </div>
+            <span class="category-badge industrial">Industrial Test</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>ViE Tech</span>
+              <span>PID Control</span>
+              <span>Python UI</span>
+              <span>Encoder Base</span>
+            </div>
+            <h3 class="project-title">Industrial Closed-Loop Illumination & Precision Moving Base (ViE Technologies)</h3>
+            <p class="project-desc">
+              Automated optical camera testing rig. Developed photodiode closed-loop illumination compensating for non-linear light intensity, coupled with an encoder-driven, limit-switch-protected precision motorized moving base for camera QA.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 6: AS5047P Magnetic Rotary Encoder PCB -->
+        <div class="project-card glass-panel" data-category="pcb embedded" data-id="as5047p-encoder">
+          <div class="project-img-wrapper">
+            <img src="assets/as5047p-encoder.png?v=2" alt="AS5047P Magnetic Encoder Board Layout">
+            <span class="category-badge pcb">PCB & Hardware</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>Altium 2-Layer</span>
+              <span>14-Bit Magnetic</span>
+              <span>SPI / ABI</span>
+              <span>12V-to-3.3V LDO</span>
+            </div>
+            <h3 class="project-title">AS5047P 14-Bit High-Precision Magnetic Rotary Encoder Board</h3>
+            <p class="project-desc">
+              Miniaturized position feedback PCB solving 3.3V sensor supply challenges on 12V robot buses. Integrates an onboard MIC5205 LDO for direct 12V-to-3.3V regulation, delivering high-speed SPI and ABI quadrature feedback for closed-loop motor control.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 7: Robot Localization PCB LB1.0 -->
+        <div class="project-card glass-panel" data-category="pcb robotics" data-id="localization-pcb">
+          <div class="project-img-wrapper">
+            <img src="assets/robot-localization-pcb.png?v=2" alt="Robot Localization & Sensor Fusion Board (RBC24/25 LB1.0) Layout">
+            <span class="category-badge pcb">PCB & Hardware</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>Altium 2-Layer</span>
+              <span>Mainboard Offloader</span>
+              <span>Odometry</span>
+              <span>Dual CAN</span>
+            </div>
+            <h3 class="project-title">Robot Localization & Sensor Fusion Board (RBC24/25 LB1.0)</h3>
+            <p class="project-desc">
+              Dedicated 2-layer coprocessor PCB engineered to relieve CPU and interrupt load on the central mainboard by hardware-capturing high-speed encoder ticks, computing real-time planar odometry locally, and streaming telemetry over CAN bus.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 8: 50A High-Current Relay Module -->
+        <div class="project-card glass-panel" data-category="pcb industrial" data-id="power-relay-board">
+          <div class="project-img-wrapper">
+            <img src="assets/power_relay_pcb.png" alt="50A / 24V High-Current Actuator Power Relay Module PCB Layout">
+            <span class="category-badge pcb">PCB & Hardware</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span>5V Signal Controlled</span>
+              <span>50A Motor Cutoff</span>
+              <span>PC817 Opto-Isolated</span>
+              <span>Deans Connectors</span>
+            </div>
+            <h3 class="project-title">50A / 24V High-Current Motor Relay & Cutoff Module</h3>
+            <p class="project-desc">
+              Engineered to control high-power robot drive motors and safely cut off 24V/50A motor power on command via a 5V controller signal. Features PC817 optocoupler isolation, an AZ21501 power relay, Deans connectors, and flyback spike suppression.
+            </p>
+            <button class="btn btn-sm btn-outline open-modal-btn">
+              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Work Experience & Leadership -->
+    <section id="experience" class="section container">
+      <div class="section-header">
+        <span class="section-subtitle">// CAREER TRACK</span>
+        <h2 class="section-title">Engineering Experience & Leadership</h2>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Timeline 1: ViTrox -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <i class="fa-solid fa-industry"></i>
+          </div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-header">
+              <div>
+                <h3 class="company-name">ViE Technologies</h3>
+                <h4 class="job-title">Embedded Systems & Python Engineering Intern — Camera Team</h4>
+              </div>
+              <div class="timeline-meta">
+                <span class="badge-time"><i class="fa-regular fa-calendar"></i> Jul 2025 – Oct 2025</span>
+                <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Penang, Malaysia</span>
+              </div>
+            </div>
+            <ul class="experience-list">
+              <li>
+                <strong>Closed-Loop Illumination Feedback System:</strong> Engineered an automated photodiode closed-loop control system utilizing Arduino and Python to compensate for non-linear optical scaling, eliminating manual operator calibration on active QA rigs.
+              </li>
+              <li>
+                <strong>Precision Motorized Moving Base:</strong> Designed and programmed an encoder-driven, limit-switch protected motion control stage ensuring repeatable, micrometer-level positioning accuracy for camera sensors.
+              </li>
+              <li>
+                <strong>X-Ray Glass Optical Transparency QA Station:</strong> Developed integrated software and electrical automation for an automated optical test bench assessing light transmittance on industrial X-ray inspection camera windows.
+              </li>
+              <li>
+                <strong>Industrial Power Control & Troubleshooting:</strong> Conducted component selection, electrical panel wiring, equipment fitting, and Python GUI integration for automated production line test benches.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Timeline 2: UTM Robocon -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-header">
+              <div>
+                <h3 class="company-name">UTM Robocon Club (Universiti Teknologi Malaysia)</h3>
+                <h4 class="job-title">PCB Designer & Electronics Lead Member</h4>
+              </div>
+              <div class="timeline-meta">
+                <span class="badge-time"><i class="fa-regular fa-calendar"></i> Oct 2023 – Oct 2025</span>
+                <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Johor, Malaysia</span>
+              </div>
+            </div>
+            <ul class="experience-list">
+              <li>
+                <strong>Flagship 4-Layer STM32H7 Mainboard:</strong> Spearheaded full design, schematic capture, and 4-layer layout in Altium Designer. Embedded 3x isolated CAN ports, 3x UART, dual I2C, 6x PWM, dual QEI, and TI TPS eFuse protection.
+              </li>
+              <li>
+                <strong>High-Speed Communication Boards:</strong> Designed an STM32F107 Ethernet-to-CAN gateway featuring 100Ω impedance-controlled differential pair routing and RMII length-matched signals.
+              </li>
+              <li>
+                <strong>Sensor & Localization Nodes:</strong> Developed the AS5047P 14-bit magnetic encoder boards and real-time dual-wheel encoder + IMU localization boards.
+              </li>
+              <li>
+                <strong>Competitive High-Pressure Troubleshooting:</strong> Diagnosed critical signal integrity and power control bottlenecks in real-time under intense international robotics competition deadlines (ABU Robocon Vietnam).
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section id="skills" class="section container">
+      <div class="section-header">
+        <span class="section-subtitle">// TECHNICAL TOOLBOX</span>
+        <h2 class="section-title">Skills & Engineering Stack</h2>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-group glass-panel">
+          <div class="skill-group-title">
+            <i class="fa-solid fa-microchip"></i>
+            <h3>Hardware & PCB Engineering</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-tag">Altium Designer (4-Layer)</div>
+            <div class="skill-tag">KiCad</div>
+            <div class="skill-tag">Impedance Matching (100Ω Diff)</div>
+            <div class="skill-tag">CAN Bus / CAN-FD</div>
+            <div class="skill-tag">SPI / I2C / UART / RMII</div>
+            <div class="skill-tag">Power Electronics (50A Relays)</div>
+            <div class="skill-tag">eFuse & Reverse Polarity</div>
+            <div class="skill-tag">DFM / Gerber Production</div>
+          </div>
+        </div>
+
+        <div class="skill-group glass-panel">
+          <div class="skill-group-title">
+            <i class="fa-solid fa-code"></i>
+            <h3>Embedded Systems & Firmware</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-tag">C / C++</div>
+            <div class="skill-tag">STM32 Microcontrollers (H7/F4/F1)</div>
+            <div class="skill-tag">STM32CubeIDE / HAL</div>
+            <div class="skill-tag">Python (Control & Test UI)</div>
+            <div class="skill-tag">FreeRTOS / Bare-Metal</div>
+            <div class="skill-tag">Arduino Architecture</div>
+            <div class="skill-tag">Linux / Bash Scripting</div>
+            <div class="skill-tag">MATLAB / Simulink</div>
+          </div>
+        </div>
+
+        <div class="skill-group glass-panel">
+          <div class="skill-group-title">
+            <i class="fa-solid fa-brain"></i>
+            <h3>Robotics, AI & Control</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-tag">ROS2 (Humble/Iron)</div>
+            <div class="skill-tag">Closed-Loop PID Control</div>
+            <div class="skill-tag">YOLOv8 Object Detection</div>
+            <div class="skill-tag">Monocular Depth Estimation</div>
+            <div class="skill-tag">Sensor Fusion (IMU + Sonar)</div>
+            <div class="skill-tag">OpenCV</div>
+            <div class="skill-tag">Navigation State Machines</div>
+            <div class="skill-tag">Edge AI Deployment</div>
+          </div>
+        </div>
+
+        <div class="skill-group glass-panel">
+          <div class="skill-group-title">
+            <i class="fa-solid fa-toolbox"></i>
+            <h3>Prototyping, CAD & Test</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-tag">SolidWorks 3D CAD</div>
+            <div class="skill-tag">Logic Analyzers (CAN/SPI/UART)</div>
+            <div class="skill-tag">SMD Soldering & Rework</div>
+            <div class="skill-tag">Bench Power Supplies</div>
+            <div class="skill-tag">Rapid 3D Prototyping</div>
+            <div class="skill-tag">Git Version Control</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Honors, Awards & Education -->
+    <section id="awards" class="section container">
+      <div class="section-header">
+        <span class="section-subtitle">// RECOGNITION</span>
+        <h2 class="section-title">Honors, Awards & Education</h2>
+      </div>
+
+      <div class="awards-grid">
+
+        <div class="award-card glass-panel highlight-gold">
+          <div class="award-icon">🏆</div>
+          <div class="award-content">
+            <span class="award-year">2024</span>
+            <h3>Panasonic Award – ABU Robocon 2024</h3>
+            <p class="award-sub">Quảng Ninh, Vietnam</p>
+            <p class="award-desc">Recognized on the international stage for outstanding robotics design, mechanical/electrical agility, and engineering sportsmanship.</p>
+          </div>
+        </div>
+
+        <div class="award-card glass-panel highlight-gold">
+          <div class="award-icon">🥇</div>
+          <div class="award-content">
+            <span class="award-year">2024</span>
+            <h3>Champion – Malaysia Robocon Friendly Match</h3>
+            <p class="award-sub">Malaysia National Robotics Event</p>
+            <p class="award-desc">1st place championship performance as lead electronics engineer with UTM Robocon team.</p>
+          </div>
+        </div>
+
+        <div class="award-card glass-panel highlight-cyan">
+          <div class="award-icon">🏅</div>
+          <div class="award-content">
+            <span class="award-year">2026</span>
+            <h3>UTM Mechatronics Theme Award</h3>
+            <p class="award-sub">Universiti Teknologi Malaysia</p>
+            <p class="award-desc">Awarded top mechatronics engineering honor at Universiti Teknologi Malaysia for intelligent robotics and automation innovation.</p>
+          </div>
+        </div>
+
+        <div class="award-card glass-panel highlight-cyan">
+          <div class="award-icon">🚗</div>
+          <div class="award-content">
+            <span class="award-year">2024</span>
+            <h3>Participant – UTM RBC Autocar Challenge</h3>
+            <p class="award-sub">UTM Robotics Competition</p>
+            <p class="award-desc">Engineered custom autonomous breakout electronics for rapid obstacle-course autocar challenge.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Education Row -->
+      <div class="education-block glass-panel">
+        <div class="edu-item">
+          <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="edu-details">
+            <h3>Bachelor of Mechatronic Engineering</h3>
+            <p class="edu-school">Universiti Teknologi Malaysia (UTM) | Johor, Malaysia</p>
+            <span class="edu-date">Oct 2022 – Feb 2027 (Expected)</span>
+          </div>
+        </div>
+
+        <div class="edu-divider"></div>
+
+        <div class="edu-item">
+          <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
+          <div class="edu-details">
+            <h3>High School Diploma</h3>
+            <p class="edu-school">Zahrat El-Saharaa International School | Jeddah, Saudi Arabia</p>
+            <span class="edu-date">CGPA: 3.8 / 4.0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section container">
+      <div class="contact-box glass-panel">
+        <div class="contact-header text-center">
+          <span class="section-subtitle">// INITIATE CONNECTION</span>
+          <h2 class="section-title">Let's Build Something Exceptional</h2>
+          <p class="contact-intro">
+            Whether you are discussing engineering opportunities, collaboration on embedded hardware, robotics, or contract PCB design, my inbox is always open.
+          </p>
+        </div>
+
+        <div class="contact-layout-grid">
+          <!-- Left Column: Contact Direct Info -->
+          <div class="contact-info-col">
+            <div class="contact-cards-grid">
+              <div class="contact-card" id="cardEmail">
+                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                <h4>Email</h4>
+                <p>moaz.hany.elbakhsha@gmail.com</p>
+                <button class="btn btn-sm btn-outline copy-trigger" data-copy="moaz.hany.elbakhsha@gmail.com">
+                  <i class="fa-regular fa-copy"></i> Copy Email
+                </button>
+              </div>
+
+              <div class="contact-card" id="cardPhone">
+                <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                <h4>Phone / WhatsApp</h4>
+                <p>+60 11-3704-7003</p>
+                <button class="btn btn-sm btn-outline copy-trigger" data-copy="+601137047003">
+                  <i class="fa-regular fa-copy"></i> Copy Number
+                </button>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+                <h4>LinkedIn</h4>
+                <p>linkedin.com/in/moazhany</p>
+                <a href="https://linkedin.com/in/moazhany" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Connect
+                </a>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <h4>Location</h4>
+                <p>Taman Desa Skudai, Johor, Malaysia</p>
+                <span class="location-badge">Open to Relocation</span>
+              </div>
+            </div>
+
+            <div class="resume-banner">
+              <div>
+                <h3>Need an offline copy of my engineering profile?</h3>
+                <p>Download my comprehensive resume formatted for engineering managers and ATS screening.</p>
+              </div>
+              <a href="assets/Moaz_Elbakhsha_Resume.pdf" download="Moaz_Elbakhsha_Resume.pdf" class="btn btn-primary">
+                <i class="fa-solid fa-file-pdf"></i> Download PDF Resume
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Direct Inquiry Form -->
+          <div class="contact-form-col">
+            <div class="contact-form-card glass-panel">
+              <div class="form-header">
+                <h3 class="form-title"><i class="fa-solid fa-paper-plane"></i> Send Direct Message</h3>
+                <p class="form-subtitle">Have an engineering role or technical collaboration in mind? Fill out below to connect directly.</p>
+              </div>
+
+              <form id="contactForm" class="contact-form" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="contactName">Your Name <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                      <i class="fa-solid fa-user"></i>
+                      <input type="text" id="contactName" placeholder="e.g. Alex Tan" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contactEmail">Your Email <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                      <i class="fa-solid fa-envelope"></i>
+                      <input type="email" id="contactEmail" placeholder="alex@company.com" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactCategory">Inquiry Type</label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <select id="contactCategory">
+                      <option value="Full-Time Engineering Opportunity">Full-Time Engineering Role</option>
+                      <option value="Hardware & PCB Design Collaboration">Hardware & Multi-Layer PCB Project</option>
+                      <option value="Embedded Systems & Firmware">Embedded Systems / STM32 Firmware</option>
+                      <option value="Robotics & Autonomous Systems">Robotics & Autonomous Systems (ROS2)</option>
+                      <option value="General Technical Inquiry">General Consultation / Networking</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactMessage">Message <span class="required">*</span></label>
+                  <div class="input-wrapper textarea-wrapper">
+                    <i class="fa-solid fa-message"></i>
+                    <textarea id="contactMessage" rows="4" placeholder="Detail your project, technical requirements, or job opportunity..." required></textarea>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="submitInquiryBtn">
+                    <i class="fa-solid fa-envelope-circle-check"></i> Send via Email Client
+                  </button>
+                  <button type="button" class="btn btn-outline" id="copyDraftBtn">
+                    <i class="fa-regular fa-copy"></i> Copy Formatted Draft
+                  </button>
+                </div>
+
+                <div class="form-status" id="formStatus"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Technical Modal for Deep Dive Specs -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-container glass-panel">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-content" id="modalDynamicContent">
+        <!-- Content will be injected dynamically via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button class="floating-top-btn" id="floatingTopBtn" aria-label="Scroll back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <!-- Footer -->
+  <footer class="footer container">
+    <p>© 2026 Moaz Hany Elbakhsha. Designed & Developed with Passion for Mechatronics & Hardware.</p>
+    <a href="#hero" class="back-to-top"><i class="fa-solid fa-arrow-up"></i> Top</a>
+  </footer>
+
+  <script src="app.js?v=2.3"></script>
+</body>
+</html>
