@@ -1074,11 +1074,12 @@ body {
 }
 
 .experience-list li::before {
-  content: '▹';
+  content: '•';
   position: absolute;
-  left: 0;
+  left: 2px;
   color: var(--accent-cyan);
   font-size: 1.1rem;
+  line-height: 1.4;
 }
 
 .experience-list strong {
@@ -1694,10 +1695,12 @@ body {
 }
 
 .modal-bullets li::before {
-  content: '⚡';
+  content: '•';
   position: absolute;
-  left: 0;
-  font-size: 0.85rem;
+  left: 2px;
+  color: var(--accent-cyan);
+  font-size: 1.1rem;
+  line-height: 1.4;
 }
 
 .modal-bullets strong {

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261002_03">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -135,7 +135,7 @@
           <span class="metric-label">Edge AI (YOLOv8) On-Robot Inference</span>
         </div>
         <div class="metric-card">
-          <span class="metric-number">🏆 Panasonic</span>
+          <span class="metric-number"><i class="fa-solid fa-trophy" style="color: #ffd700; margin-right: 6px;"></i>Panasonic</span>
           <span class="metric-label">ABU Robocon 2024 Vietnam Award</span>
         </div>
       </div>
@@ -144,7 +144,7 @@
     <!-- About & Engineering Philosophy -->
     <section id="about" class="section container">
       <div class="section-header">
-        <span class="section-subtitle">// BACKGROUND & PHILOSOPHY</span>
+        <span class="section-subtitle">BACKGROUND & PHILOSOPHY</span>
         <h2 class="section-title">Bridging Pure Hardware with Intelligent Control</h2>
       </div>
 
@@ -153,7 +153,7 @@
           <div class="card-icon"><i class="fa-solid fa-compass-drafting"></i></div>
           <h3>System-Level Hardware Design</h3>
           <p>
-            Specialized in multi-layer PCB design using <strong>Altium Designer</strong>. Experienced in routing 100-ohm impedance-controlled differential pairs (Ethernet, RMII), noise-isolated 4-layer stackups, CAN bus transceivers, eFuse power protection, and high-current power switching up to 50A.
+            Multi-layer PCB design using <strong>Altium Designer</strong>. Experienced in routing 100-ohm controlled-impedance differential pairs (Ethernet, RMII), low-noise 4-layer ground planes, CAN transceivers, eFuse protection, and high-current power stages up to 50A.
           </p>
         </div>
 
@@ -161,7 +161,7 @@
           <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
           <h3>Embedded Firmware & Protocols</h3>
           <p>
-            Proficient in bare-metal and HAL development for <strong>STM32 (Cortex-M7, M4, M3)</strong> and microcontrollers. Solid experience architecting robust multi-node fieldbus communications across CAN1/2/3, high-speed SPI, I2C, and UART.
+            Firmware development for <strong>STM32 (Cortex-M7, M4, M3)</strong> using C/C++ bare-metal and HAL. Practical experience setting up multi-node fieldbus networks across CAN1/2/3, SPI, I2C, and UART with tight timing.
           </p>
         </div>
 
@@ -169,7 +169,7 @@
           <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
           <h3>Autonomous Robotics & Perception</h3>
           <p>
-            Engineering end-to-end robotics systems: from sensor fusion (ultrasonic arrays, IMUs, quadrature and magnetic encoders) to ROS2 navigation state machines, closed-loop PID motion control, and real-time edge computer vision using YOLOv8.
+            Building complete robotics setups from scratch: fusing ultrasonic sensors, IMUs, and encoders for closed-loop PID motion control, writing ROS2 navigation state machines, and running edge AI vision with YOLOv8.
           </p>
         </div>
 
@@ -177,7 +177,7 @@
           <div class="card-icon"><i class="fa-solid fa-industry"></i></div>
           <h3>Industrial QA & Production Test</h3>
           <p>
-            Industrial test engineering track record at <strong>ViE Technologies</strong>, designing closed-loop optical illumination test benches, automated X-ray glass transparency QA, and limit-switch protected precision positioning mechanisms.
+            Test engineering at <strong>ViE Technologies</strong>, building closed-loop optical illumination test benches, automated glass transparency QA for X-ray cameras, and motorized positioning stages with limit switches.
           </p>
         </div>
       </div>
@@ -187,7 +187,7 @@
     <section id="projects" class="section container">
       <div class="section-header-flex">
         <div>
-          <span class="section-subtitle">// PORTFOLIO DIRECTORY</span>
+          <span class="section-subtitle">FEATURED PROJECTS</span>
           <h2 class="section-title">Featured Engineering Projects</h2>
         </div>
 
@@ -240,10 +240,10 @@
             </div>
             <h3 class="project-title">4-Layer STM32H7 Central Robotics Mainboard (UTM RBC 24/25)</h3>
             <p class="project-desc">
-              High-density central robot controller engineered for international robotics competition. Upgraded to 480 MHz STM32H7 to eliminate legacy MCU processing lag, and integrated a 3rd dedicated CAN channel to prevent signal crashes under heavy bus loads.
+              Main controller board I designed for UTM's Robocon competition robots. Upgraded from an older STM32F4 to a 480 MHz STM32H7 when our control loops started lagging during matches, and added a 3rd CAN bus channel after motor telemetry traffic began causing mid-match communication crashes.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
@@ -263,10 +263,10 @@
             </div>
             <h3 class="project-title">Autonomous Navigation & Control System for Greenhouse Mobile Robot (FYP)</h3>
             <p class="project-desc">
-              Differential-drive autonomous mobile robot platform engineered for agricultural row-following. Combines ROS2 finite state machine with 4x ultrasonic distance array, IMU, and dual-PID control for crop-line tracking, 90° row transitions, and 160° obstacle U-turn recovery.
+              Autonomous mobile robot platform built for my Final Year Project to navigate greenhouse crop rows. Combines a ROS2 navigation state machine with 4 ultrasonic sensors, an IMU, and a dual-PID loop to prevent drift on loose dirt, handle 90° row transitions, and back out of dead ends.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
@@ -281,20 +281,20 @@
             <div class="project-tags">
               <span>YOLOv8 Edge AI</span>
               <span>PyTorch</span>
-              <span>10 Hz Inference</span>
+              <span>10 FPS Inference</span>
               <span>OpenCV</span>
             </div>
             <h3 class="project-title">Edge AI Vision & Plant Disease Guidance System for Agricultural Robotics</h3>
             <p class="project-desc">
-              Real-time edge computer vision pipeline engineered for greenhouse row guidance and crop inspection using YOLOv8 at 10 Hz. Solved path-identification failures faced by earlier student iterations by detecting crop polybag lines to dynamically calculate navigation corridors directly between the plants.
+              Real-time vision system built to guide our greenhouse robot down crop aisles and screen plants for disease. Traditional line tracking failed on uneven greenhouse soil, so I trained YOLOv8 to track the polybag lines directly, calculating path width and heading angles at 10 FPS on a Raspberry Pi.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
 
-        <!-- Project 3: Ethernet-to-CAN Gateway -->
+        <!-- Project 4: Ethernet-to-CAN Gateway -->
         <div class="project-card glass-panel" data-category="pcb embedded industrial" data-id="ethernet-can-gateway">
           <div class="project-img-wrapper">
             <img src="assets/ethernet-can-gateway.png" alt="Industrial Ethernet-to-CAN Gateway PCB">
@@ -309,15 +309,15 @@
             </div>
             <h3 class="project-title">Industrial Ethernet-to-CAN Communication Gateway PCB</h3>
             <p class="project-desc">
-              Multi-sheet industrial communication gateway. Features strict 100Ω differential pair routing (ETHER_TX/RX), length-matched RMII lines, dual CAN transceivers with 120Ω termination, and integrated magnetics RJ45.
+              Custom 4-layer gateway board built to bridge high-speed Ethernet with CAN bus networks on our competition robot. Designed in Altium with 100Ω controlled-impedance differential pairs, length-matched RMII traces to stop packet loss, and dual CAN transceivers with 120Ω split termination.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
 
-        <!-- Project 4: ViTrox Closed-Loop Illumination & Precision Base -->
+        <!-- Project 5: ViTrox Closed-Loop Illumination & Precision Base -->
         <div class="project-card glass-panel" data-category="industrial embedded" data-id="vitrox-closed-loop">
           <div class="project-img-wrapper fallback-visual">
             <div class="schematic-preview-art">
@@ -335,10 +335,10 @@
             </div>
             <h3 class="project-title">Industrial Closed-Loop Illumination & Precision Moving Base (ViE Technologies)</h3>
             <p class="project-desc">
-              Automated optical camera testing rig. Developed photodiode closed-loop illumination compensating for non-linear light intensity, coupled with an encoder-driven, limit-switch-protected precision motorized moving base for camera QA.
+              Automated camera test rig developed during my internship at ViE Technologies. Built a photodiode PID feedback circuit to stop light intensity from drifting as lamps heated up, paired with an encoder-driven moving stage with limit switches for repeatable camera sensor positioning.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
@@ -358,10 +358,10 @@
             </div>
             <h3 class="project-title">AS5047P 14-Bit High-Precision Magnetic Rotary Encoder Board</h3>
             <p class="project-desc">
-              Miniaturized position feedback PCB solving 3.3V sensor supply challenges on 12V robot buses. Integrates an onboard MIC5205 LDO for direct 12V-to-3.3V regulation, delivering high-speed SPI and ABI quadrature feedback for closed-loop motor control.
+              Compact magnetic encoder board designed to give our robot drive motors precise 14-bit position feedback. Added an onboard LDO so the board can run straight off the robot's existing 12V motor bus, saving us from routing noisy 3.3V lines across the chassis.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
@@ -381,10 +381,10 @@
             </div>
             <h3 class="project-title">Robot Localization & Sensor Fusion Board (RBC24/25 LB1.0)</h3>
             <p class="project-desc">
-              Dedicated 2-layer coprocessor PCB engineered to relieve CPU and interrupt load on the central mainboard by hardware-capturing high-speed encoder ticks, computing real-time planar odometry locally, and streaming telemetry over CAN bus.
+              Dedicated 2-layer coprocessor board built to handle dead reckoning and offload high-speed encoder interrupts from our main robot controller. Captures encoder pulses and IMU data locally, calculates planar odometry, and streams clean position frames over CAN.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
@@ -404,10 +404,10 @@
             </div>
             <h3 class="project-title">50A / 24V High-Current Motor Relay & Cutoff Module</h3>
             <p class="project-desc">
-              Engineered to control high-power robot drive motors and safely cut off 24V/50A motor power on command via a 5V controller signal. Features PC817 optocoupler isolation, an AZ21501 power relay, Deans connectors, and flyback spike suppression.
+              High-current motor cutoff board built to safely switch and isolate 24V/50A competition drive motors. Uses a PC817 optocoupler to keep inductive motor spikes away from sensitive 5V controller logic, with wide copper pours and flyback protection for emergency stops.
             </p>
             <button class="btn btn-sm btn-outline open-modal-btn">
-              <i class="fa-solid fa-diagram-project"></i> Deep Dive Specs
+              <i class="fa-solid fa-diagram-project"></i> Project Details & Specs
             </button>
           </div>
         </div>
@@ -418,7 +418,7 @@
     <!-- Work Experience & Leadership -->
     <section id="experience" class="section container">
       <div class="section-header">
-        <span class="section-subtitle">// CAREER TRACK</span>
+        <span class="section-subtitle">EXPERIENCE & LEADERSHIP</span>
         <h2 class="section-title">Engineering Experience & Leadership</h2>
       </div>
 
@@ -442,16 +442,16 @@
             </div>
             <ul class="experience-list">
               <li>
-                <strong>Closed-Loop Illumination Feedback System:</strong> Engineered an automated photodiode closed-loop control system utilizing Arduino and Python to compensate for non-linear optical scaling, eliminating manual operator calibration on active QA rigs.
+                <strong>Closed-Loop Illumination System:</strong> Built an automated photodiode feedback circuit using Arduino and Python to compensate for lamp warmth drift, eliminating repetitive manual recalibrations on active test rigs.
               </li>
               <li>
-                <strong>Precision Motorized Moving Base:</strong> Designed and programmed an encoder-driven, limit-switch protected motion control stage ensuring repeatable, micrometer-level positioning accuracy for camera sensors.
+                <strong>Precision Motorized Moving Stage:</strong> Designed and programmed an encoder-driven, limit-switch-protected motion stage for repeatable, micrometer-level positioning of camera sensors.
               </li>
               <li>
-                <strong>X-Ray Glass Optical Transparency QA Station:</strong> Developed integrated software and electrical automation for an automated optical test bench assessing light transmittance on industrial X-ray inspection camera windows.
+                <strong>X-Ray Glass QA Station:</strong> Built integrated software and test automation to measure light transmittance on protective glass windows for industrial X-ray inspection cameras.
               </li>
               <li>
-                <strong>Industrial Power Control & Troubleshooting:</strong> Conducted component selection, electrical panel wiring, equipment fitting, and Python GUI integration for automated production line test benches.
+                <strong>Industrial Wiring & Production Integration:</strong> Handled component selection, panel wiring, enclosure fitting, and built an easy-to-use Python desktop GUI for production operators.
               </li>
             </ul>
           </div>
@@ -475,16 +475,16 @@
             </div>
             <ul class="experience-list">
               <li>
-                <strong>Flagship 4-Layer STM32H7 Mainboard:</strong> Spearheaded full design, schematic capture, and 4-layer layout in Altium Designer. Embedded 3x isolated CAN ports, 3x UART, dual I2C, 6x PWM, dual QEI, and TI TPS eFuse protection.
+                <strong>4-Layer STM32H7 Mainboard:</strong> Designed the complete schematic and 4-layer PCB layout in Altium Designer. Integrated 3 isolated CAN ports, 3 UARTs, dual I2C, 6 PWM motor channels, dual QEI encoder interfaces, and TI TPS eFuse protection.
               </li>
               <li>
-                <strong>High-Speed Communication Boards:</strong> Designed an STM32F107 Ethernet-to-CAN gateway featuring 100Ω impedance-controlled differential pair routing and RMII length-matched signals.
+                <strong>High-Speed Communication Boards:</strong> Designed an STM32F107 Ethernet-to-CAN gateway featuring 100Ω controlled-impedance differential pairs and length-matched RMII traces.
               </li>
               <li>
-                <strong>Sensor & Localization Nodes:</strong> Developed the AS5047P 14-bit magnetic encoder boards and real-time dual-wheel encoder + IMU localization boards.
+                <strong>Sensor & Localization Nodes:</strong> Built the AS5047P 14-bit magnetic encoder boards and real-time dual-wheel encoder + IMU localization coprocessor boards.
               </li>
               <li>
-                <strong>Competitive High-Pressure Troubleshooting:</strong> Diagnosed critical signal integrity and power control bottlenecks in real-time under intense international robotics competition deadlines (ABU Robocon Vietnam).
+                <strong>Rapid Competition Debugging:</strong> Diagnosed and resolved signal integrity issues, power bus noise, and firmware timing bugs under high-pressure international match deadlines (ABU Robocon Vietnam).
               </li>
             </ul>
           </div>
@@ -496,7 +496,7 @@
     <!-- Technical Skills Matrix -->
     <section id="skills" class="section container">
       <div class="section-header">
-        <span class="section-subtitle">// TECHNICAL TOOLBOX</span>
+        <span class="section-subtitle">TECHNICAL SKILLS</span>
         <h2 class="section-title">Skills & Engineering Stack</h2>
       </div>
 
@@ -574,14 +574,14 @@
     <!-- Honors, Awards & Education -->
     <section id="awards" class="section container">
       <div class="section-header">
-        <span class="section-subtitle">// RECOGNITION</span>
+        <span class="section-subtitle">HONORS & RECOGNITION</span>
         <h2 class="section-title">Honors, Awards & Education</h2>
       </div>
 
       <div class="awards-grid">
 
         <div class="award-card glass-panel highlight-gold">
-          <div class="award-icon">🏆</div>
+          <div class="award-icon"><i class="fa-solid fa-trophy"></i></div>
           <div class="award-content">
             <span class="award-year">2024</span>
             <h3>Panasonic Award – ABU Robocon 2024</h3>
@@ -591,7 +591,7 @@
         </div>
 
         <div class="award-card glass-panel highlight-gold">
-          <div class="award-icon">🥇</div>
+          <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
           <div class="award-content">
             <span class="award-year">2024</span>
             <h3>Champion – Malaysia Robocon Friendly Match</h3>
@@ -601,7 +601,7 @@
         </div>
 
         <div class="award-card glass-panel highlight-cyan">
-          <div class="award-icon">🏅</div>
+          <div class="award-icon"><i class="fa-solid fa-award"></i></div>
           <div class="award-content">
             <span class="award-year">2026</span>
             <h3>UTM Mechatronics Theme Award</h3>
@@ -611,7 +611,7 @@
         </div>
 
         <div class="award-card glass-panel highlight-cyan">
-          <div class="award-icon">🚗</div>
+          <div class="award-icon"><i class="fa-solid fa-car-side"></i></div>
           <div class="award-content">
             <span class="award-year">2024</span>
             <h3>Participant – UTM RBC Autocar Challenge</h3>
@@ -650,7 +650,7 @@
     <section id="contact" class="section container">
       <div class="contact-box glass-panel">
         <div class="contact-header text-center">
-          <span class="section-subtitle">// INITIATE CONNECTION</span>
+          <span class="section-subtitle">GET IN TOUCH</span>
           <h2 class="section-title">Let's Build Something Exceptional</h2>
           <p class="contact-intro">
             Whether you are discussing engineering opportunities, collaboration on embedded hardware, robotics, or contract PCB design, my inbox is always open.
@@ -800,6 +800,6 @@
     <a href="#hero" class="back-to-top"><i class="fa-solid fa-arrow-up"></i> Top</a>
   </footer>
 
-  <script src="app.js?v=2.3"></script>
+  <script src="app.js?v=20261002_03"></script>
 </body>
 </html>

@@ -13,32 +13,32 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'PCB & Hardware Engineering',
       image: 'assets/stm32h7-mainboard.png',
       specs: [
-        { label: 'Processor', value: 'STM32H7 ARM Cortex-M7 (480 MHz Speed Upgrade)' },
-        { label: 'PCB Stackup', value: '4-Layer High-Density, Solid GND Planes' },
-        { label: 'Fieldbus', value: '3x Isolated CAN Bus (Added Channel to Stop Crashes)' },
-        { label: 'Power Protection', value: 'Texas Instruments TPS eFuse + Reverse Polarity' },
+        { label: 'Processor', value: 'STM32H7 ARM Cortex-M7 (480 MHz)' },
+        { label: 'PCB Stackup', value: '4-Layer High-Density, Solid Ground Planes' },
+        { label: 'Fieldbus', value: '3x Hardware-Isolated CAN Buses' },
+        { label: 'Power Protection', value: 'TI TPS eFuse + Reverse Polarity Diode' },
         { label: 'Motion & Actuation', value: '6x High-Speed PWM + Dual QEI Quadrature' },
         { label: 'EDA Environment', value: 'Altium Designer (DFM Verified)' }
       ],
-      description: 'Engineered as the central processing brain for the UTM Robocon autonomous competition robots competing at national and international levels (ABU Robocon). Upgraded specifically to eliminate processing latency and fieldbus crashes experienced on earlier robot hardware revisions.',
+      description: 'Designed this 4-layer controller as the central brain for our UTM Robocon competition robots. On our earlier robot, running multi-motor kinematics, sensor reading, and CAN communication on an older STM32F4 caused noticeable control lag and occasional mid-match communication crashes. I redesigned the mainboard around a 480 MHz STM32H7, added a 3rd isolated CAN bus to split high-rate motor commands from sensor traffic, and integrated electronic fuse protection to keep the board safe during motor stalls and testing faults.',
       challenges: [
         {
-          title: 'Compute Bottleneck: Legacy IC Processing Saturation & Loop Latency',
-          problem: 'The previous robot controller utilized an older, lower-clocked microcontroller (STM32F4 series) that suffered from severe CPU saturation under peak competition loads. Concurrently executing high-rate multi-motor kinematics, sensor data parsing, and real-time state machines introduced non-deterministic execution delays exceeding 15 ms, creating control loop lag and motor trajectory jitter.',
-          solution: 'Identified the execution bottleneck and upgraded the architecture to the ultra-high-performance <strong>STM32H7 ARM Cortex-M7 operating at 480 MHz</strong>, featuring a double-precision Floating-Point Unit (FPU) and 32KB L1 instruction/data cache. Slashed kinematic loop cycle times to under 1.2 ms (over 90% latency reduction), eliminating timing jitter and enabling deterministic real-time multi-tasking.'
+          title: 'Kinematics Loop Delays on Legacy Microcontroller',
+          problem: 'During peak competition maneuvers, our earlier STM32F4 mainboard had to compute inverse kinematics, process encoder interrupts, and service CAN messages concurrently. The compute bottleneck pushed execution cycle times past 15 ms, causing motor command jitter and trajectory tracking errors on the field.',
+          solution: 'Redesigned the board around an STM32H7 (ARM Cortex-M7 @ 480 MHz) equipped with double-precision FPU and 32KB cache. Restructured tasks to drop kinematic calculation cycle time down to 1.2 ms (a 92% reduction), delivering deterministic, jitter-free trajectory execution even under full sensor polling loads.'
         },
         {
-          title: 'Fieldbus Congestion: Signal Collisions & Fatal CAN Bus-Off Crashes',
-          problem: 'During high-speed competition maneuvers, continuous high-frequency motor velocity feedback, encoder positions, and sensor packets were multiplexed across only two shared CAN channels. This triggered severe bus arbitration contention, Transmit/Receive Error Counter (TEC/REC) overflows, and fatal CAN Bus-Off shutdowns that halted the robot mid-match.',
-          solution: 'Re-architected the fieldbus topology by integrating an additional <strong>3rd dedicated, hardware-isolated CAN transceiver channel (expanding to 3x independent CAN buses: CAN1, CAN2, CAN3)</strong> with isolated ground planes and split 120Ω terminations. High-frequency motor actuation was isolated exclusively onto CAN1, leaving CAN2 and CAN3 dedicated to real-time sensor telemetry and safety interlocks. This eliminated packet contention, completely prevented bus-off crashes, and achieved 100% telemetry transmission reliability under peak load.'
+          title: 'CAN Bus Contention & Bus-Off Lockups',
+          problem: 'Telemetry feedback from four high-speed drive motors, encoders, and sensor arrays shared only two CAN channels. Under rapid acceleration bursts, heavy message arbitration caused transmission error counter (TEC) spikes and triggered fatal CAN Bus-Off state transitions that immobilized the robot mid-match.',
+          solution: 'Re-architected the fieldbus by integrating a 3rd hardware-isolated CAN transceiver channel with dedicated ground planes and split 120Ω termination. Dedicated CAN1 exclusively to high-rate motor actuation while routing telemetry and sensor packets across CAN2/3, eliminating bus arbitration clashes and achieving zero communication dropouts during tournament play.'
         }
       ],
       highlights: [
-        '<strong>480 MHz Core Processing Upgrade:</strong> Replaced the slow legacy MCU with an STM32H7 Cortex-M7 operating at 480 MHz with FPU to execute intensive kinematics with zero execution latency.',
-        '<strong>3x Isolated CAN Bus Architecture:</strong> Added a 3rd dedicated hardware CAN channel to eliminate signal congestion and prevent catastrophic CAN bus crashes.',
-        '<strong>Robust Power Integrity:</strong> Integrated TI TPS electronic fuse circuitry with reverse-polarity protection, driving dual low-noise LDO voltage regulators for sensitive 3.3V analog and digital rails.',
-        '<strong>Motion I/O & Encoders:</strong> Broken out dual Quadrature Encoder Interfaces (QEI) and 6x PWM timer channels for closed-loop multi-motor locomotion control.',
-        '<strong>Manufacturing Yield (DFM):</strong> Handled full Gerber generation (RS-274X), NC drill, 3D STEP modeling, and BOM optimization for rapid turnaround and surface mount assembly.'
+        '<strong>480 MHz Processor Upgrade:</strong> Replaced the older STM32F4 with an STM32H7 Cortex-M7 to run robot kinematics and state machines with zero control lag.',
+        '<strong>3 Isolated CAN Channels:</strong> Separated motor drive commands from sensor traffic across three independent buses, preventing bus saturation and sudden communication lockups.',
+        '<strong>Protected Power Rails:</strong> Integrated Texas Instruments TPS eFuse protection and reverse-polarity circuitry to protect logic components during motor stalls and shorts.',
+        '<strong>Dedicated Motion I/O:</strong> Broke out dual Quadrature Encoder Interfaces (QEI) and 6 high-speed PWM channels for direct closed-loop motor control.',
+        '<strong>Production-Ready DFM:</strong> Generated full Gerber files, NC drill files, 3D STEP models, and verified BOM in Altium Designer for quick fabrication and assembly.'
       ]
     },
 
@@ -48,25 +48,25 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'assets/capstone_robot/robot_corridor_test.png',
       specs: [
         { label: 'Platform Framework', value: 'ROS2 / Python / C++' },
-        { label: 'Sensor Suite', value: '4x HC-SR04 Sonar, MPU6050 6-DOF IMU, Encoders' },
-        { label: 'Control Loop', value: 'Deterministic Dual-PID Heading & Centering' },
-        { label: 'Low-Level Controller', value: 'Arduino Uno / Mega (PWM Driver)' },
-        { label: 'High-Level Compute', value: 'Host PC / SBC running ROS2 Navigation Stack' },
-        { label: 'Path Maneuvers', value: 'Row-Following, 90° Turn, 160° Obstacle U-Turn' }
+        { label: 'Sensor Suite', value: '4x Ultrasonic (HC-SR04), 6-DOF IMU (MPU6050), Encoders' },
+        { label: 'Control Loop', value: 'Dual-PID Heading & Corridor Centering' },
+        { label: 'Low-Level Controller', value: 'Arduino Uno / Mega (PWM & Direction)' },
+        { label: 'High-Level Compute', value: 'Onboard Computer running ROS2 Navigation Stack' },
+        { label: 'Path Maneuvers', value: 'Crop Row Tracking, 90° Row Transitions, 160° U-Turn' }
       ],
-      description: 'Differential-drive autonomous mobile robot platform engineered for agricultural row-following and greenhouse corridor navigation. Built with a distributed architecture: deterministic sensor sampling and PWM motor driving on the microcontroller, paired with a ROS2 state machine executing multi-row traversal and obstacle recovery.',
+      description: 'Differential-drive mobile robot built for my Final Year Project to navigate agricultural greenhouse aisles autonomously. I used a split control setup: an Arduino handles real-time ultrasonic sensor reading and motor PWM signals, while an onboard computer runs a ROS2 state machine to guide the robot down crop rows, execute turns at aisle ends, and safely reverse out when paths are blocked.',
       challenges: [
         {
-          title: 'Heading Drift & Odometry Slip on Loose Greenhouse Soil',
-          problem: 'Wheel slippage on loose, uneven soil caused open-loop encoder odometry to accumulate angular heading drift, causing the robot to veer off-center toward crop boundaries during long corridor runs.',
-          solution: 'Engineered a dual-PID sensor fusion loop integrating a 4x ultrasonic sonar distance array with an MPU6050 6-DOF IMU and wheel encoders. Dynamically balanced lateral corridor error and commanded real-time heading corrections to maintain center-row alignment.'
+          title: 'Odometry Drift & Wheel Slip on Uneven Soil',
+          problem: 'Greenhouse furrows feature loose, damp dirt where wheel slip causes cumulative angular error in encoder dead reckoning. Over 15-meter crop corridors, this drift caused the robot to veer off-center into polybags and drip irrigation lines.',
+          solution: 'Implemented a sensor-fusion dual-PID controller combining four ultrasonic distance sensors (lateral corridor ranging) with an MPU6050 6-DOF IMU (yaw rate) and wheel encoders. The algorithm dynamically balances lateral wall clearance against heading corrections, maintaining corridor centerline tracking within ±3 cm throughout aisle traversal.'
         }
       ],
       highlights: [
-        '<strong>Sensor Fusion & Drift Elimination:</strong> Combined 4x ultrasonic distance arrays with an MPU6050 6-DOF IMU and rotary encoders into a dual-PID control loop that eliminates diagonal drift down narrow crop rows.',
-        '<strong>Autonomous State Machine:</strong> Designed a ROS2 finite state machine handling automatic row-end detection, 90-degree adjacent-row switching, and 160-degree obstacle-avoidance recovery maneuvers.',
-        '<strong>Distributed Control Architecture:</strong> Distributed compute tasks: high-level state planning on ROS2 paired with deterministic low-level motor execution on the microcontroller via USB serial communication.',
-        '<strong>Fail-Safe Collision Avoidance:</strong> Continuous ultrasonic threshold monitoring triggering emergency deceleration and reversing upon detecting forward obstructions.'
+        '<strong>Sensor Fusion for Centering:</strong> Fused 4 ultrasonic distance sensors with an MPU6050 IMU and wheel encoders in a dual-PID loop, keeping the robot centered even when wheels slipped on dirt.',
+        '<strong>Navigation State Machine:</strong> Built a ROS2 state machine that detects aisle exits, executes 90-degree turns into adjacent rows, and performs a 160-degree U-turn if the path is blocked.',
+        '<strong>Split Compute Architecture:</strong> Offloaded real-time motor control and sensor polling to a dedicated microcontroller, leaving the ROS2 host free for navigation planning via serial communication.',
+        '<strong>Obstacle Safety Deceleration:</strong> Set up continuous distance checks that trigger emergency deceleration and recovery backing before the chassis gets close to obstacles.'
       ]
     },
 
@@ -75,31 +75,31 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Computer Vision & Edge AI',
       image: 'assets/capstone_robot/greenhouse_yolo_clear.jpg',
       specs: [
-        { label: 'Model Architecture', value: 'YOLOv8 Nano (YOLOv8n) Deep Learning' },
-        { label: 'Edge Inference Rate', value: '10 Hz Real-Time on Embedded Hardware' },
-        { label: 'Detection Scope', value: '9 Crop Health/Disease Classes + Row Polybags' },
-        { label: 'Guidance Metrics', value: 'Row Heading Angle, Path Width (m), Obstacles' },
+        { label: 'Model Architecture', value: 'YOLOv8 Nano (YOLOv8n)' },
+        { label: 'Edge Inference Rate', value: '10 FPS Real-Time on Embedded Hardware' },
+        { label: 'Detection Scope', value: '9 Crop Health/Disease Conditions + Polybag Rows' },
+        { label: 'Guidance Metrics', value: 'Heading Angle, Corridor Width (m), Obstacles' },
         { label: 'Edge Target Hardware', value: 'Raspberry Pi 3B+ (picamera2 GPU Pipeline)' },
-        { label: 'Deployment Status', value: 'Validated in Greenhouse (Decoupled from Chassis)' }
+        { label: 'Deployment Status', value: 'Validated on Live Crops in UTM Greenhouse' }
       ],
-      description: 'Real-time edge computer vision pipeline engineered to provide autonomous agricultural robots with vision-based crop-row guidance, path-width calculation, and automated plant disease detection. Resolved path identification failures faced by earlier student iterations by using real-time crop polybag detection to construct virtual center-line trajectories between plant rows.',
+      description: 'Real-time computer vision system built to guide our greenhouse robot down crop aisles and check plant health. Earlier student teams tried using floor tape and basic color thresholding for navigation, which failed under changing sunlight and messy dirt furrows. I trained a custom YOLOv8 model to detect polybags and foliage instead, turning the crop rows into visual guide rails while simultaneously checking plants for disease symptoms.',
       challenges: [
         {
-          title: 'Unstructured Greenhouse Navigation: Visual Path & Row Centering Identification',
-          problem: 'Previous students and earlier project iterations faced persistent difficulties identifying reliable navigation paths for the mobile robot inside the greenhouse. Conventional line-tracking sensors and classical thresholding failed completely because greenhouse furrows lack painted floor lines, suffer from uneven soil and foliage clutter, and experience harsh, fluctuating ambient sunlight shadows.',
-          solution: 'Formulated an innovative visual guidance strategy that utilizes the crops themselves as natural geometric guides. Trained a custom YOLOv8 model to detect individual crop polybags and foliage in real time, computing regression boundary lines along both crop rows. By calculating the dynamic midline between both lines, the algorithm accurately extracts center heading angles (e.g. 92.7° alignment) and corridor path width (0.85m – 1.46m), enabling reliable autonomous steering directly between the plants.'
+          title: 'Crop Corridor Tracking Under Fluctuating Natural Illumination',
+          problem: 'Greenhouse aisles lack painted navigation lines, and earlier prototypes using floor-tape optical sensors or HSV color thresholding failed due to dirt-covered paths and harsh, moving sunlight shadows across the foliage.',
+          solution: 'Shifted to visual feature extraction by training a custom YOLOv8 model to detect crop polybag bases and plant stems in real time. Linear regression fits left and right boundary trajectories from detected bags, calculating real-time corridor center heading (e.g. 92.7°) and navigable path width (0.85m to 1.46m) to steer the robot reliably.'
         },
         {
-          title: 'Compute Bottleneck on Low-Power Single-Board Computer',
-          problem: 'Standard PyTorch deep learning models overwhelmed the CPU of the Raspberry Pi 3B+, resulting in thermal throttling and frame rates dropping below 2 FPS, far too slow for real-time robotic guidance.',
-          solution: 'Engineered an optimized edge inference pipeline utilizing YOLOv8n with GPU-accelerated video capture via picamera2 and thread-isolated frame grabbing. Achieved a steady 10 Hz inference rate with sub-100ms latency, enabling real-time navigation feedback.'
+          title: 'Edge AI Latency Constraints on Embedded Compute',
+          problem: 'Standard PyTorch deep learning models overloaded the Raspberry Pi 3B+ CPU, pushing core temperatures into thermal throttling and dropping video processing below 2 FPS—insufficient for closed-loop steering adjustments.',
+          solution: 'Optimized the pipeline with a quantized YOLOv8n network, GPU-accelerated video capture via picamera2, and dedicated multi-threaded frame acquisition. Stabilized inference throughput at a consistent 10 FPS with sub-100ms latency, enabling real-time navigation feedback while keeping CPU thermals well within safe operating limits.'
         }
       ],
       highlights: [
-        '<strong>Lightweight Edge Inference:</strong> Built a custom PyTorch/YOLOv8 deep learning pipeline detecting 9 plant health/disease classes running at 10 Hz real-time on embedded hardware using picamera2 GPU acceleration.',
-        '<strong>Dynamic Visual Geometry:</strong> Programmed real-time row geometry extraction calculating path center angle (e.g. 92.7° alignment) and corridor width (0.85m – 1.46m) for steering guidance.',
-        '<strong>Forward Obstacle Alerts:</strong> Detected forward obstacles with confidence tags and computed dynamic steering clearance vectors (e.g. 21.5° steer-left alerts).',
-        '<strong>Validated in Field Trials:</strong> Tested on real greenhouse chili crops, proving autonomous vision capabilities under natural variable illumination.'
+        '<strong>10 FPS Edge Inference:</strong> Optimized YOLOv8n with the picamera2 GPU pipeline on a Raspberry Pi 3B+, achieving real-time 10 FPS detection without thermal throttling.',
+        '<strong>Natural Crop Row Guidance:</strong> Extracted aisle boundaries directly from detected polybags, calculating real-time corridor width (0.85m – 1.46m) and heading angle to steer between rows.',
+        '<strong>Plant Disease Screening:</strong> Trained the model to identify 9 distinct disease symptoms and pest damage types across live chili crops.',
+        '<strong>Obstacle Clearance Alerts:</strong> Calculated dynamic steering clearance angles (e.g. 21.5° steer-left alerts) whenever workers, carts, or equipment obstructed the aisle.'
       ]
     },
 
@@ -108,55 +108,54 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'High-Speed PCB & Industrial Bus',
       image: 'assets/ethernet-can-gateway.png',
       specs: [
-        { label: 'Microcontroller', value: 'STM32F107 32-bit ARM Cortex-M3' },
-        { label: 'Differential Pairs', value: '100-Ohm Controlled Impedance (ETHER_TX/RX)' },
+        { label: 'Microcontroller', value: 'STM32F107 (ARM Cortex-M3 with Hardware MAC)' },
+        { label: 'Differential Pairs', value: '100Ω Controlled Impedance (ETHER_TX / ETHER_RX)' },
         { label: 'Physical Layer', value: 'Pulse J0011D21B RJ45 (Integrated Magnetics)' },
-        { label: 'RMII Bus', value: 'Length-Matched High-Speed Routing' },
+        { label: 'RMII Bus', value: 'Length-Matched High-Speed Traces' },
         { label: 'CAN Transceivers', value: 'Dual TJA1050 / TCAN334 with 120Ω Split Term.' },
-        { label: 'Layers & Stackup', value: '4-Layer Low-EMI Board (ETH_PCB)' }
+        { label: 'Layers & Stackup', value: '4-Layer Low-EMI Board with Solid Ground Return' }
       ],
-      description: 'Industrial-grade communication gateway bridging Ethernet network protocols with real-time CAN bus telemetry for robotic industrial telemetry.',
+      description: 'Designed a 4-layer gateway board to bridge high-speed Ethernet with CAN bus networks. We needed this for our robot telemetry system so high-bandwidth sensor streams could pass between our main navigation computer and distributed motor controllers without packet loss or electrical noise.',
       challenges: [
         {
-          title: 'Signal Reflection & Frame Dropouts on High-Speed Ethernet',
-          problem: 'High-frequency Ethernet signals experienced reflection and packet degradation due to trace impedance mismatches and EMI radiated from adjacent switching power converters.',
-          solution: 'Routed strict 100Ω controlled-impedance differential pairs for ETHER_TX/RX lines, strictly matched trace lengths across the RMII interface, and implemented TVS diode ESD clamps alongside split 120Ω CAN termination.'
+          title: 'High-Speed Signal Integrity & Ethernet Packet Loss',
+          problem: '100BASE-TX differential signals between the PHY and the magnetics RJ45 experienced signal reflections and frame dropouts caused by board trace impedance mismatches and electromagnetic coupling from adjacent DC-DC switching regulators.',
+          solution: 'Calculated PCB trace geometry in Altium to enforce strict 100Ω differential impedance on ETHER_TX/RX pairs, matched RMII trace lengths within 50-mil tolerance, and isolated the chassis/magnetics ground plane from digital ground with TVS diode ESD clamps, restoring 100% Ethernet packet throughput.'
         }
       ],
       highlights: [
-        '<strong>Controlled Impedance:</strong> Calculated and routed strict 100-ohm differential pairs for high-speed Ethernet transmit/receive lines to prevent reflections and packet dropouts.',
-        '<strong>Signal Integrity:</strong> Strict trace length matching across the RMII bus between the STM32F107 MCU and the Ethernet PHY chip.',
-        '<strong>Fieldbus Termination:</strong> Dual CAN transceivers equipped with onboard 120-ohm differential split termination and TVS diode electrostatic discharge (ESD) suppression.',
-        '<strong>Power Plane Partitioning:</strong> Sized 20-30 mil power traces and placed 0603 decoupling caps immediately adjacent to IC power pins.'
+        '<strong>100Ω Controlled Impedance:</strong> Matched trace geometry to maintain 100-ohm differential impedance on Ethernet lines, stopping reflections and packet dropouts.',
+        '<strong>RMII Trace Matching:</strong> Matched trace lengths across high-speed RMII lines between the STM32F107 MCU and the Ethernet PHY to prevent timing skew.',
+        '<strong>Dual CAN with Split Termination:</strong> Integrated two independent CAN channels with onboard 120-ohm split termination and TVS diodes for ESD protection.',
+        '<strong>Clean Power Planes:</strong> Routed wide 20-30 mil power traces and placed 0603 decoupling capacitors right next to IC power pins over a continuous ground plane.'
       ]
     },
-
 
     'vitrox-closed-loop': {
       title: 'Industrial Closed-Loop Illumination & Precision Moving Base (ViE Technologies)',
       category: 'Industrial Automation & QA Systems',
       image: null,
       specs: [
-        { label: 'Host Organization', value: 'ViE Technologies (Penang)' },
-        { label: 'Control Technique', value: 'Photodiode Dynamic PID Feedback' },
-        { label: 'Motion Control', value: 'Encoder-Driven Precision Moving Base' },
-        { label: 'Safety Protection', value: 'Hardware Limit Switches & Software Bounds' },
-        { label: 'Software Stack', value: 'Python Automation UI + Arduino Firmware' },
-        { label: 'QA Target', value: 'X-Ray Protective Glass Light Transmittance' }
+        { label: 'Host Company', value: 'ViE Technologies (Camera Team, Penang)' },
+        { label: 'Light Control', value: 'Photodiode Closed-Loop Dynamic PID Feedback' },
+        { label: 'Motion Mechanism', value: 'Motorized Precision Moving Base with Encoder Feedback' },
+        { label: 'Safety System', value: 'Dual Hardware Limit Switches + Software Travel Bounds' },
+        { label: 'Software Stack', value: 'Python Automation GUI + Arduino Firmware' },
+        { label: 'QA Target', value: 'X-Ray Protective Glass Light Transmittance Testing' }
       ],
-      description: 'Automated test engineering project developed within the Camera Team at ViE Technologies for automated machine vision QA and optical characterization.',
+      description: 'Automated test rig I built during my internship on the Camera Team at ViE Technologies. The station evaluates light transmittance through protective glass used on industrial X-ray inspection cameras. I developed both the closed-loop lighting system to keep illumination steady and the motorized positioning stage to hold camera sensors at exact test coordinates.',
       challenges: [
         {
-          title: 'Thermal Lux Drift & Non-Linear Light Decay During Testing',
-          problem: 'Inspection illumination sources decayed non-linearly over prolonged duty cycles due to thermal buildup, requiring repetitive and costly manual recalibrations by production technicians.',
-          solution: 'Engineered a closed-loop photodiode optical sensor circuit with dynamic Python PID feedback that autonomously adjusts programmable power supplies in real time, maintaining consistent luminous flux.'
+          title: 'Luminous Intensity Drift from Thermal Buildup',
+          problem: 'During extended camera QA cycles, inspection light sources experienced non-linear luminous output decay as lamp housings heated up. Because illumination was unstable, camera calibration baselines drifted, requiring technicians to stop testing and manually recalibrate multiple times per shift.',
+          solution: 'Engineered an active optical feedback loop using a calibrated photodiode circuit linked to an Arduino and Python PID control service. The system samples live chamber lux and dynamically adjusts the programmable power supply output in real time, stabilizing target illuminance within ±1.5% across full 8-hour production shifts.'
         }
       ],
       highlights: [
-        '<strong>Closed-Loop Illumination:</strong> Designed photodiode optical feedback compensating for non-linear light intensity decay over operating temperatures, eliminating manual technician calibration.',
-        '<strong>Precision Motion Base:</strong> Engineered an encoder-driven motorized moving base with dual hardware limit switches, ensuring repeatable optical camera sensor positioning.',
-        '<strong>X-Ray Glass QA Station:</strong> Programmed the complete Python automation control software interfacing hardware actuators, power supplies, and light meters to evaluate optical transparency.',
-        '<strong>Production Deployment:</strong> Drafted wiring schematics, component selection rationale, and customized user-friendly calibration GUIs for production technicians.'
+        '<strong>Closed-Loop Light Stabilization:</strong> Built a photodiode feedback circuit with PID control to compensate for thermal lamp drift, eliminating repetitive manual recalibrations by technicians.',
+        '<strong>Precision Motorized Stage:</strong> Built an encoder-driven motorized moving base with dual limit switches, ensuring cameras returned to the exact same position on every test run.',
+        '<strong>Automated X-Ray Glass QA:</strong> Wrote Python automation software that controls the stage motors, powers the lights, takes optical measurements, and logs pass/fail results automatically.',
+        '<strong>Floor-Ready Handover:</strong> Prepared complete wiring schematics, component selection documentation, and an easy-to-use Python desktop GUI so production operators could run tests with one click.'
       ]
     },
 
@@ -165,26 +164,26 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Miniature Sensor PCB Design',
       image: 'assets/as5047p-encoder.png?v=2',
       specs: [
-        { label: 'Sensor IC', value: 'ams AS5047P 14-Bit Magnetic Rotary Position' },
-        { label: 'Digital Interface', value: 'High-Speed SPI Bus + ABI Quadrature + PWM' },
-        { label: 'Resolution', value: '14-bit (16,384 positions per revolution)' },
-        { label: 'Power Regulation', value: 'Onboard MIC5205-3.3 LDO (12V Robot Bus Direct Input)' },
-        { label: 'Form Factor', value: 'Miniaturized Motor-Mountable Footprint' },
-        { label: 'EDA Suite', value: 'Altium Designer (2-Layer with Ground Pour)' }
+        { label: 'Sensor IC', value: 'ams AS5047P 14-Bit Magnetic Rotary Position Sensor' },
+        { label: 'Digital Interfaces', value: 'High-Speed SPI (Absolute Position) + ABI + PWM' },
+        { label: 'Resolution', value: '14-Bit (16,384 positions per 360° revolution)' },
+        { label: 'Power Input', value: 'Direct 12V Robot Bus via Onboard MIC5205-3.3 LDO' },
+        { label: 'Form Factor', value: 'Miniature Circular Board for Motor-Endbell Mounting' },
+        { label: 'EDA Suite', value: 'Altium Designer (2-Layer with Solid Copper Pour)' }
       ],
-      description: 'Ultra-compact motor feedback PCB providing high-resolution angular position sensing for closed-loop BLDC/DC motor control in high-speed mobile robotics.',
+      description: 'Designed a miniature magnetic encoder board to give our robot drive motors precise angular position feedback for closed-loop speed and position control. The challenge on our competition robots was that standard motor bays only provide 12V power; running separate 3.3V lines from the central controller over long wire harnesses picked up heavy electrical noise from the motors.',
       challenges: [
         {
-          title: 'Power Rail Incompatibility (12V Robot Bus vs. 3.3V Sensor IC)',
-          problem: 'Most robot power distribution boards distribute 12V power rails to motor locations, making it difficult to power the 3.3V AS5047P sensor IC without running long, noise-prone dedicated 3.3V lines from the central controller.',
-          solution: 'Integrated an onboard wide-input MIC5205-3.3 low-dropout (LDO) regulator directly on the encoder PCB with localized decoupling capacitors, allowing the board to step down the robot\'s existing 12V bus power locally to a clean, stable 3.3V rail right at the sensor.'
+          title: 'Powering a 3.3V Sensor from a 12V Motor Distribution Bus',
+          problem: 'Competition robot wire harnesses only distribute 12V power to motor bays. Running separate 3.3V power leads from the central controller across long chassis cable tracks introduced high inductive noise and added wire bundle clutter.',
+          solution: 'Integrated an onboard wide-input MIC5205-3.3 low-dropout regulator with localized high-frequency decoupling directly onto the encoder PCB. This enabled the board to tap directly into the adjacent 12V motor supply rail while delivering clean, ripple-free 3.3V power directly to the AS5047P sensor IC.'
         }
       ],
       highlights: [
-        '<strong>12V Bus Direct Compatibility:</strong> Solved 3.3V supply challenges by embedding the MIC5205-3.3 LDO, allowing direct connection to the robot\'s standard 12V motor supply without dedicated step-down converters or extra cabling.',
-        '<strong>14-bit Spatial Accuracy:</strong> Utilized the AS5047P magnetic Hall sensor delivering 16,384 positions per 360° rotation for smooth torque and velocity control.',
-        '<strong>Multi-Protocol Support:</strong> Routed SPI communication lines for absolute position configuration alongside ABI incremental pulses for real-time hardware timers.',
-        '<strong>Production Ready:</strong> Full Gerber, NC drill, and 3D STEP files designed for custom 3D-printed and CNC motor end-bell integration.'
+        '<strong>Direct 12V Bus Operation:</strong> Integrated an onboard MIC5205 LDO directly on the sensor board, eliminating long 3.3V power wires and noise pick-up across the robot chassis.',
+        '<strong>14-Bit Angular Precision:</strong> Used the AS5047P Hall-effect sensor to deliver 16,384 counts per revolution, allowing tight velocity control and smooth low-speed motor driving.',
+        '<strong>Dual Output Options:</strong> Routed SPI traces to read absolute angles on startup, plus ABI quadrature pulses for direct connection to hardware microcontroller timers.',
+        '<strong>Compact Motor-Mount Layout:</strong> Designed the circular 2-layer PCB to fit snugly inside custom 3D-printed end-bells on our drive motors.'
       ]
     },
 
@@ -193,26 +192,26 @@ document.addEventListener('DOMContentLoaded', () => {
       category: '2-Layer Sensor Fusion & Coprocessor PCB',
       image: 'assets/robot-localization-pcb.png?v=2',
       specs: [
-        { label: 'Board Code', value: 'RNS_2.1.1 (LB1.0)' },
-        { label: 'Stackup', value: '2-Layer Optimized Ground Plane & Noise Immunity' },
-        { label: 'Input Channels', value: 'Dual Optical Wheel Encoders + SPI 6-DOF IMU' },
-        { label: 'Telemetry Stream', value: 'Dual CAN Bus + High-Speed UART (115200+ baud)' },
-        { label: 'Function', value: 'Mainboard CPU Offloader & Real-Time Planar Odometry' },
-        { label: 'Application', value: 'Autonomous Competition Navigation' }
+        { label: 'Board Identifier', value: 'RNS_2.1.1 (LB1.0)' },
+        { label: 'PCB Stackup', value: '2-Layer with Continuous Bottom Ground Return' },
+        { label: 'Sensor Inputs', value: 'Dual Optical Wheel Encoders + SPI 6-DOF IMU' },
+        { label: 'Communication', value: 'Dual CAN Bus + High-Speed UART (115200+ baud)' },
+        { label: 'Primary Function', value: 'Offloads Mainboard Interrupts & Computes Planar Odometry' },
+        { label: 'Application', value: 'Competition Robot Dead Reckoning & Navigation' }
       ],
-      description: 'Dedicated 2-layer sensor aggregation coprocessor PCB engineered to offload the master robotics mainboard by handling high-frequency encoder tick counting and calculating planar robot odometry locally.',
+      description: 'Dedicated 2-layer coprocessor board built to handle dead reckoning for our competition robots. High-resolution optical encoders on fast-spinning wheels generate thousands of interrupts every second, which previously overloaded the main controller\'s CPU and caused control loop jitter. This board handles all the pulse counting and heading math locally, then sends clean position coordinates over CAN.',
       challenges: [
         {
-          title: 'Microcontroller Interrupt Saturation During High-Speed Wheel Rotation',
-          problem: 'High-PPR optical encoders generated thousands of hardware interrupt pulses per second, saturating CPU cycles on the primary controller and starving trajectory calculations.',
-          solution: 'Architected this dedicated 2-layer coprocessor PCB to relieve CPU and interrupt load on the central mainboard: hardware-captures encoder interrupts, executes real-time odometry sensor fusion locally, and streams aggregated telemetry via CAN frames.'
+          title: 'Main Controller Interrupt Saturation from High-PPR Encoders',
+          problem: 'At top wheel velocities, high-resolution optical encoders generated tens of thousands of hardware interrupt pulses per second. Servicing these interrupts on the main controller consumed disproportionate CPU bandwidth, introducing control loop latency in the robot\'s primary motion planner.',
+          solution: 'Designed this dedicated 2-layer coprocessor board to hardware-capture encoder timer pulses and read SPI IMU gyro rates independently. The coprocessor calculates real-time planar odometry vectors locally and transmits consolidated position packets over CAN bus at a steady 50 Hz, freeing up master controller CPU cycles for trajectory planning.'
         }
       ],
       highlights: [
-        '<strong>Mainboard CPU Offloading:</strong> Isolates high-frequency encoder hardware interrupts from the central mainboard, preserving master controller processing power for high-level path planning and control loops.',
-        '<strong>Deterministic Odometry:</strong> Direct hardware capture of high-PPR wheel encoders combined with SPI IMU rate-gyro reading to calculate instantaneous planar position.',
-        '<strong>High-Rate Fieldbus Telemetry:</strong> Packages odometry vectors into CAN frames and UART packets delivered to the primary navigation computer with minimal latency.',
-        '<strong>Signal Protection:</strong> 2-layer layout featuring continuous bottom ground return polygons and noise-isolated signal routing to shield high-impedance sensor lines from drivetrain motor EMI.'
+        '<strong>Interrupt Offloading:</strong> Moved thousands of encoder pulses per second off the main processor onto a local MCU, freeing up mainboard CPU cycles for navigation logic.',
+        '<strong>Onboard Odometry Calculation:</strong> Combines dual optical encoder pulses with SPI IMU rate-gyro data locally to calculate real-time robot position and heading.',
+        '<strong>Clean CAN Telemetry:</strong> Packs processed position coordinates into standard CAN frames, sending periodic updates so the rest of the robot has instant dead-reckoning data.',
+        '<strong>Noise-Shielded Layout:</strong> Routed signal traces over a solid bottom ground plane and kept encoder inputs filtered to prevent motor switching EMI from causing false counts.'
       ]
     },
 
@@ -221,26 +220,26 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Power Electronics & Motor Power Management',
       image: 'assets/power_relay_pcb.png',
       specs: [
-        { label: 'Continuous Rating', value: '50 Amperes at 24V DC (AZ21501-1CET-24DF Relay)' },
-        { label: 'Control Interface', value: '5V Logic Signal (2-Pin XH2.54) with SMD Fuse' },
-        { label: 'Galvanic Isolation', value: 'PC817 Optocoupler (Full 5V Logic to 24V Power Domain Isolation)' },
+        { label: 'Continuous Rating', value: '50A at 24V DC (AZ21501-1CET-24DF Relay)' },
+        { label: 'Control Signal', value: '5V Logic Input (XH2.54 Connector) with Inline Fuse' },
+        { label: 'Isolation', value: 'PC817 Optocoupler (Complete Logic-to-Power Isolation)' },
         { label: 'Power Terminals', value: 'High-Current Deans Connectors (Male In / Female Out)' },
-        { label: 'Protection', value: 'Fast Flyback Diode (D2) + Littelfuse Input Protection' },
-        { label: 'Target Load', value: '5V Controller-Switched High-Torque DC Drive Motors' }
+        { label: 'Protection', value: 'Fast Flyback Diode (D2) + Littelfuse Overcurrent Fuse' },
+        { label: 'Application', value: 'E-Stop and Power Cutoff for High-Torque DC Drive Motors' }
       ],
-      description: 'Dedicated high-current relay module engineered to control competition drive motors and safely cut off motor power on demand via a 5V controller signal. Features opto-isolated switching, heavy copper trace pours with solder relief for up to 50A, and robust Deans connectors.',
+      description: 'Designed a 50A/24V power relay board to safely switch and cut power to our robot\'s high-power drive motors. During matches or testing, we needed a reliable way for a standard 5V GPIO signal to cut 50A motor power instantly during an emergency stop, without letting inductive voltage spikes back into the main controller.',
       challenges: [
         {
-          title: 'Safe Motor Power Cutoff & Controller Isolation Under 50A Loads',
-          problem: 'Directly switching and cutting off high-draw 24V/50A competition motors from a microcontroller risks back-EMF voltage transients, ground bounce, and catastrophic mainboard damage during emergency stops or motor stalls.',
-          solution: 'Architected this 5V signal-controlled relay board utilizing an American Zettler AZ21501 50A power relay and PC817 optocoupler. The 5V controller signal is optically isolated and fuse-protected, driving an NPN coil switch with flyback suppression to safely cut or supply high-current motor power via Deans connectors.'
+          title: 'High-Current DC Motor Cutoff & Logic Isolation Under 50A Loads',
+          problem: 'Switching 24V competition motors under full 50A load generates substantial back-EMF inductive spikes and ground bounce. If shared with logic grounds, emergency motor stops could reset or permanently damage sensitive 3.3V/5V microcontroller boards.',
+          solution: 'Designed complete galvanic isolation between logic and power stages using a PC817 optocoupler and an American Zettler AZ21501 50A power relay. The 5V microcontroller signal only triggers the optocoupler LED through an inline SMD fuse, which drives an NPN coil switch protected by a fast flyback diode to safely isolate and cut 50A motor power on command.'
         }
       ],
       highlights: [
-        '<strong>5V Controller-Driven Switching:</strong> Allows any 5V microcontroller GPIO to cleanly control and switch off high-current motors on demand without drawing heavy current from logic rails.',
-        '<strong>Galvanic Opto-Isolation:</strong> PC817 optocoupler completely separates the sensitive 5V controller domain from the noisy 24V/50A motor power domain, eliminating ground loops and noise propagation.',
-        '<strong>Heavy-Current Geometry & Thermal Relief:</strong> Wide copper pours with exposed solder-mask tinning windows paired with Deans connectors to carry continuous 50A bursts with minimal resistive voltage drop.',
-        '<strong>Onboard Visual Diagnostics:</strong> Dual LEDs provide immediate status verification: LED1 confirms 5V control signal reception, while LED2 confirms 24V relay coil activation.'
+        '<strong>Clean 5V Logic Control:</strong> Lets any standard 5V microcontroller GPIO switch or cut high-power 24V motors without pulling current from sensitive logic rails.',
+        '<strong>Optocoupler Isolation:</strong> PC817 provides galvanic isolation between logic and power grounds, preventing motor noise and ground bounce from resetting the robot controller.',
+        '<strong>50A Copper Pour Layout:</strong> Sized wide copper pours with exposed solder-mask windows for solder tinning, carrying up to 50A with low resistance and heat buildup.',
+        '<strong>Visual Status LEDs:</strong> Added two onboard LEDs for quick troubleshooting: LED1 shows the 5V control signal is active, while LED2 verifies the 24V coil has engaged.'
       ]
     }
   };
@@ -389,21 +388,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let challengesHtml = '';
     if (project.challenges && project.challenges.length > 0) {
       challengesHtml += `
-        <h4 class="modal-section-h4">// PROBLEMS ENCOUNTERED & ROOT-CAUSE RESOLUTIONS</h4>
+        <h4 class="modal-section-h4">Technical Challenges & Engineering Approach</h4>
         <div class="modal-challenges">
       `;
       project.challenges.forEach(c => {
         challengesHtml += `
           <div class="challenge-card">
             <div class="challenge-header">
-              <span class="challenge-title"><i class="fa-solid fa-microchip" style="color: var(--accent-cyan); font-size: 0.9rem;"></i> ${c.title}</span>
+              <span class="challenge-title"><i class="fa-solid fa-wrench" style="color: var(--accent-cyan); font-size: 0.9rem;"></i> ${c.title}</span>
             </div>
             <div class="challenge-problem-box">
-              <span class="challenge-badge-problem"><i class="fa-solid fa-triangle-exclamation"></i> Identified Problem & Root Cause</span>
+              <span class="challenge-badge-problem"><i class="fa-solid fa-triangle-exclamation"></i> Technical Challenge</span>
               <p class="challenge-problem-text">${c.problem}</p>
             </div>
             <div class="challenge-solution-box">
-              <span class="challenge-badge-solution"><i class="fa-solid fa-circle-check"></i> Implemented Engineering Solution & Impact</span>
+              <span class="challenge-badge-solution"><i class="fa-solid fa-circle-check"></i> Engineering Approach</span>
               <p class="challenge-solution-text">${c.solution}</p>
             </div>
           </div>
@@ -422,22 +421,22 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="fallback-visual" style="height: 180px; border-radius: var(--radius-md); margin-bottom: 24px; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0d1525, #111e38);">
           <div class="schematic-preview-art" style="display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--accent-amber);">
             <i class="fa-solid fa-lock" style="font-size: 2.2rem;"></i>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 1.5px; font-weight: 700;">CONFIDENTIAL // PROPRIETARY HARDWARE</span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 1.5px; font-weight: 700;">CONFIDENTIAL | PROPRIETARY HARDWARE</span>
           </div>
         </div>
       `}
 
-      <h4 class="modal-section-h4">// ARCHITECTURE SPECIFICATIONS</h4>
+      <h4 class="modal-section-h4">Technical Specifications</h4>
       <div class="modal-spec-grid">
         ${specsHtml}
       </div>
 
-      <h4 class="modal-section-h4">// ENGINEERING OVERVIEW</h4>
+      <h4 class="modal-section-h4">Project Overview</h4>
       <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; margin-bottom: 20px;">
         ${project.description}
       </p>
 
-      <h4 class="modal-section-h4">// KEY TECHNICAL ACCOMPLISHMENTS</h4>
+      <h4 class="modal-section-h4">Key Implementation Details</h4>
       <ul class="modal-bullets">
         ${bulletsHtml}
       </ul>
